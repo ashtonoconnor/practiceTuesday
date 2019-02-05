@@ -1,22 +1,34 @@
-
+/**
+ * 
+ * @author Ashton O'Connor period 3A
+ *
+ */
 public class ArrayTester {
 	
 	
 	public static void main(String[] args) {
 		
 		
-		int[][] square = {{1,2,3},{2,3,1},{3,1,2}};
+		int[][] square = {{1,2,3},{2,4,1},{3,1,2}};
 		
 		int[][] arr2D = { {0,1,2}, {3,4,5},  {6,7,8}, {9,5,3} };
-		//int[] result = ArrayTester.getColumn(arr2D, 1);
-		//for (int i = 0; i < arr2D.length; i++) {
-		//	System.out.println(result[i]);
-		//}
+		int[] result = ArrayTester.getColumn(arr2D, 1);
+		for (int i = 0; i < arr2D.length; i++) {
+		System.out.println(result[i]);
+		}
 		ArrayTester.isLatin(square);
 		
 		
 	}
-	
+	/**
+	 * +1 for constructing int[] of size arr2D
+	 * +1 for arr2D[r][c] -- accessing al items in one column
+	 * +1 for assigning result[r] from arr2D
+	 * +1 for having all items result array in order
+	 * @param arr2D
+	 * @param c
+	 * @return
+	 */
 	
 	public static int[] getColumn(int[][] arr2D, int c) {
 		
@@ -82,7 +94,15 @@ public class ArrayTester {
 	
 	
 	
-	
+	/**
+	 * +1 for calling containsDuplicates
+	 * +1 for calling hasAllValues
+	 * +1 for applying hasAllValues to all rows
+	 * +1 for calling getColumn
+	 * +1 for returning true/false when respective conditions are satisfied
+	 * @param square
+	 * @return
+	 */
 	
 	public static boolean isLatin(int[][] square) {
 		
@@ -95,6 +115,11 @@ public class ArrayTester {
 				System.out.println("false");
 				return false;
 			}
+		}
+		for (int c = 0; c < square[0].length; c++) {
+		if (!hasAllValues(square[0], getColumn(square, c))) {
+			return false;
+		}
 		}
 		System.out.println("true");
 		return true;
